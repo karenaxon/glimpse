@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+.hide-scrollbar::-webkit-scrollbar{
+  display: none;
+}
+
+/* ----- Project Colors ----- */
+/* Logo Image
+Green #88ED24
+
+Logo Name
+Local Brewery Four Regular
+Blue #0079C6
+
+SHARE|LIKE|SHARE
+PT Mono Regular
+Gray #404040 */
