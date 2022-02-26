@@ -29,7 +29,7 @@ export default {
       type: "image",
       hotspot: true,
     },
-
+    
     {
       name: "userId",
       title: "UserId",
