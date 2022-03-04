@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import GoogleLogin from 'react-google-login';
 import { useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
@@ -6,6 +6,9 @@ import video from '../assets/bg-video.mp4';
 import logo from '../assets/logo-transparent.png';
 
 const Login = () => {
+
+
+
   return (
     <div className='flex justify-start items-center flex-col h-screen'>
       <div className='relative w-full h-full'>
@@ -22,16 +25,21 @@ const Login = () => {
         <div className="p-5">
           <img src={logo} width='300px' alt="logo" />
         </div>
-        <div>
+        <div className='items-center'>
           <GoogleLogin 
-            clientId=''
+            clientId={process.env.REACT_APP_GOOGLE_API_TOKEN}
             render={(renderProps) => (
               <button
                 type="button"
-                className="bg-blueColor text-center" width='240px'>
-                <FcGoogle className="mr-10" />Sign in with Google
+                className="bg-mainColor flex justify-center items-center p-3 rounded-lg cursor-pointer outline-none"
+                onClick={renderProps.onClick} 
+                disabled={renderProps.disabled}
+                >
+                <FcGoogle className="mr-2" />
+                <p id="google-signIn-text">Sign in with Google</p>
               </button>
             )}
+            
           />
         </div>
       </div>
