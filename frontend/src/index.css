@@ -10,6 +10,10 @@ body {
   display: none;
 }
 
+#google-signIn-text{
+  color: #0079C6;
+}
+
 /* ----- Project Colors ----- */
 /* Logo Image
 Green #88ED24
