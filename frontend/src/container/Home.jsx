@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState, useRef, useEffect } from 'react'
+
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <div className='flex bg-gray-50 md: flex-row '>
+      Home
+    </div>
   )
 }
 
