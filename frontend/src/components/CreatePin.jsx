@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const CreatePin = () => {
+const CreatePin = ({ user }) => {
   return (
-    <div>CreatePin</div>
+    <div>
+      CreatePin
+    </div>
   )
 }
 
