@@ -55,7 +55,7 @@ const Login = () => {
             )}
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
-            // cookiePolicy="single-host-origin"
+            Policy="single-host-origin"
           />
         </div>
       </div>
