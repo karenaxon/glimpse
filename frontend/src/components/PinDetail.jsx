@@ -40,6 +40,23 @@ const PinDetail = ({ user }) => {
     fetchPinDetails();
   }, [pinId]);
 
+  const addComment = () => {
+    if(comment){
+      setAddingComment(true);
+
+      client
+      .patch(pinId)
+      .setIfMissing({ comments: [] })
+      .insert('after', 'comments[-1]', [{ comment, _key: uuidv4(), postedBy: {_type: 'postedBy', _ref: user._id }}])
+      .commit()
+      .then(() => {
+        fetchPinDetails();
+        setComment('');
+        setAddingComment(false);
+      });
+    }
+  };
+
   if (!pinDetail) return <Spinner message="Loading pin..." />;
 
   return (
@@ -98,6 +115,13 @@ const PinDetail = ({ user }) => {
               value={comment}
               onChange={(e) => setComment(e.target.value)}
               />
+              <button
+              type="button"
+              className="bg-red-500 text-white rounded-full px-6 py-2 font-semibold text-base outline-none"
+              onClick={addComment}
+              >
+              {addingComment ? "Posting..." : "Post"}
+              </button>
             </div>
           </div>
           </div>
