@@ -22,6 +22,12 @@ const UserProfile = () => {
   
   }, [userId])
   
+  const logout = () => {
+    localStorage.clear();
+
+    navigate('/login');
+  };
+
   if(!user) {
     return <Spinner message="Loading profile..."/>
   }
@@ -37,12 +43,30 @@ const UserProfile = () => {
             alt="user-pic"
           />
           <img
-            className='rounded-full w-20 h-20 -mt-10 shadow-xl object-cover'
+            className='rounded-full w-20 h-20 -mt-10 shadow-xl object-cover outline outline-blue-600 hover:outline-green-400'
             src={user.image}
             alt="user-pic"
           />
           <div className='font-bold text-3xl text-center mt-3'>
             {user.userName}
+          </div>
+          <div className=''>
+            <GoogleLogout 
+              clientId={ `${process.env.REACT_APP_GOOGLE_API_TOKEN}`}
+              render={(renderProps) => (
+                <button
+                type='button'
+                className='bg-white p-2 rounded-full cursor-pointer outline-none shadow-md'
+                onClick={renderProps.disabled}
+                disabled={renderProps.disabled}
+                >
+                <AiOutlineLogout color="red" fontSize={21} />
+                <p className='bg-white rounded-full text-color-red items-center'>Logout</p>
+                </button>
+              )}
+              onLogoutSuccess={logout}
+              cookiePolicy="single_host_origin"
+            />
           </div>
           </div>
         </div>
