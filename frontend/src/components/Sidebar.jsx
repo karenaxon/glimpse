@@ -1,20 +1,13 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { RiHomeFill } from 'react-icons/ri';
+import { TiHome } from 'react-icons/ti';
 // import { IoIosArrowForward } from 'react-icon/io';
 import logo from "../assets/logo-transparent.png";
+import { categories } from '../utils/data';
+import { RiChatSmile3Fill } from 'react-icons/ri';
 
 const isNotActiveStyle = 'flex items-center px-5 gap-3 text-gray-500 hover:text-black transition-all duration-200 ease-in-out capitalize';
-const isActiveStyle = 'flex items-center px-5 gap-3 font-extrabold border-r-r-2 border-black transition-all duration-200 ease-in-out capitalize';
-
-const categories = [
-  { name: 'Animals' },
-  { name: 'Wallpapers' },
-  { name: 'Photography' },
-  { name: 'Gaming' },
-  { name: 'Coding' },
-  { name: 'Other' },
-]
+const isActiveStyle = 'bg-greenColor rounded-full flex items-center px-5 py-1 gap-3 font-extrabold border-r-r-2 border-black transition-all duration-200 ease-in-out capitalize';
 
 const Sidebar = ({ user, closeToggle }) => {
   const handleCloseSidebar = () => {
@@ -26,10 +19,10 @@ const Sidebar = ({ user, closeToggle }) => {
     <div className='flex flex-col'>
       <Link
       to="/"
-      className='flex px-5 gap-2 my-6 pt-1 w-190 items-center'
+      className='flex px-1 gap-2 my-6 pt-1 w-190 items-center'
       onClick={handleCloseSidebar}
       >
-        <img src={logo} alt="logo" className='w-full' />
+        <img src={logo} alt="logo"/>
         </Link>
         <div className='flex flex-col gap-5'>
           <NavLink
@@ -37,7 +30,7 @@ const Sidebar = ({ user, closeToggle }) => {
             className={({ isActive }) => (isActive? isActiveStyle: isNotActiveStyle)}
             onClick={handleCloseSidebar}
             >
-              <RiHomeFill />
+              <TiHome size={30}/>
               Home
           </NavLink>
           <h3 className='mt-2 px-5 text-base 2xl:text-xl'>Discover Categories</h3>
@@ -48,6 +41,7 @@ const Sidebar = ({ user, closeToggle }) => {
               onClick={handleCloseSidebar}
               key={category.name}
             >
+              <RiChatSmile3Fill size={31} color={'#0079C6'}/>
               {category.name}
             </NavLink>
           ))}
