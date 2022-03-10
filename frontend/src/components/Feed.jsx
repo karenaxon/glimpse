@@ -4,6 +4,7 @@ import { feedQuery, searchQuery } from '../utils/data';
 import { client } from '../client';
 import MasonryLayout from './MasonryLayout';
 import Spinner from './Spinner';
+import { RiChatSmile3Line } from 'react-icons/ri'
 
 const Feed = () => {
   const [pins, setPins] = useState();
@@ -32,11 +33,18 @@ const Feed = () => {
 
   if(loading) return <Spinner message="We are adding new ideas to your feed!" />
 
+  if(!pins?.length) return <div 
+    className=' flex justify-center text-[#0079C6]' >
+    <RiChatSmile3Line className='pr-2 -mt-1' size={31} color={'#0079C6'} />
+    <h2>No pins have been created for this category yet.
+    </h2>
+  </div>
+
   return (
     <div>
       {pins && <MasonryLayout pins={pins} />}
     </div>
-  )
+  ) 
 }
 
 export default Feed;
