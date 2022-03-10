@@ -35,7 +35,7 @@ const Sidebar = ({ user, closeToggle }) => {
           </NavLink>
           <hr className='w-full line-height-2'/>
           <h3 className='mt-2 px-5 text-gray-500 uppercase text 2xl:text-xl'>Categories</h3>
-          {categories.slice(0, categories.length-1).map((category) => (
+          {categories.slice(0, categories.length).map((category) => (
             <NavLink
               to={`/category/${category.name}`}
               className={({ isActive }) => (isActive? isActiveStyle: isNotActiveStyle)}
