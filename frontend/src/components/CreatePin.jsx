@@ -86,7 +86,7 @@ const CreatePin = ({ user }) => {
                 <div className="lex flex-col items-center justify-center h-full">
                   <div className="flex flex-col justify-center items-center">
                     <p className="font-bold text-2xl">
-                      <AiOutlineCloudUpload />
+                      <AiOutlineCloudUpload color={'#88ED24'} size={31}/>
                     </p>
                     <p className="text-lg">Click to upload</p>
                   </div>
@@ -173,9 +173,9 @@ const CreatePin = ({ user }) => {
               <button
               type="button"
               onClick={savePin}
-              className="bg-red-500 text-white font-bold p-2 rounded-full w-28 outline-none"
+              className="bg-blueColor text-white font-bold p-2 rounded-full w-28 outline-none"
               >
-                Save pin
+                Save pin!
               </button>
             </div>
           </div>
