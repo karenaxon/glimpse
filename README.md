@@ -8,6 +8,7 @@ A social media app for sharing images.
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 
 ## Technologies Used
+* Javascript
 * React
 * Sanity
 * Tailwind
@@ -20,7 +21,8 @@ A social media app for sharing images.
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 
 ## Known Bugs
-* None
+* Google user content isn't always returned. Insted the GET returns a 403.
+* Google logout not working yet.
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 
