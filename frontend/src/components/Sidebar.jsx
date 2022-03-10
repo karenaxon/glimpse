@@ -6,8 +6,8 @@ import logo from "../assets/logo-transparent.png";
 import { categories } from '../utils/data';
 import { RiChatSmile3Fill } from 'react-icons/ri';
 
-const isNotActiveStyle = 'flex items-center px-5 gap-3 text-gray-500 hover:text-black transition-all duration-200 ease-in-out capitalize';
-const isActiveStyle = 'bg-greenColor rounded-full flex items-center px-5 py-1 gap-3 font-extrabold border-r-r-2 border-black transition-all duration-200 ease-in-out capitalize';
+const isNotActiveStyle = 'flex items-center px-5 gap-3 text-gray-500 hover:text-black transition-all duration-200 ease-in-out uppercase';
+const isActiveStyle = 'bg-greenColor rounded-full flex items-center px-5 py-1 gap-3 font-extrabold border-r-r-2 border-black transition-all duration-200 ease-in-out uppercase text-slate-500 tracking-wide';
 
 const Sidebar = ({ user, closeToggle }) => {
   const handleCloseSidebar = () => {
@@ -33,7 +33,7 @@ const Sidebar = ({ user, closeToggle }) => {
               <TiHome size={30}/>
               Home
           </NavLink>
-          <h3 className='mt-2 px-5 text-base 2xl:text-xl'>Discover Categories</h3>
+          <h3 className='mt-2 px-5 text-base 2xl:text-xl'>Categories</h3>
           {categories.slice(0, categories.length-1).map((category) => (
             <NavLink
               to={`/category/${category.name}`}
