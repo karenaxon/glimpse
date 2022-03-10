@@ -1,15 +1,15 @@
 export const categories = [
   {
-    name: "clothes",
+    name: "animals",
   },
   {
-    name: "fitness",
+    name: "clothes",
   },
   {
     name: "coding",
   },
   {
-    name: "photography",
+    name: "fitness",
   },
   {
     name: "food",
@@ -18,11 +18,11 @@ export const categories = [
     name: "nature",
   },
   {
-    name: "travel",
+    name: "photography",
   },
   {
-    name: "animals",
-  },  
+    name: "travel",
+  },
   {
     name: "other",
   },
