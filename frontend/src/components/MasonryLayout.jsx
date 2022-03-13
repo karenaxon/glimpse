@@ -3,12 +3,19 @@ import Masonry from "react-masonry-css";
 import Pin from "./Pin";
 
 const breakpointColumnsObj = {
-  default: 4,
-  3000: 6,
-  2000: 5,
-  1200: 3,
-  100: 2,
-  500: 1,
+//   default: 4,
+//   3000: 6,
+//   2000: 5,
+//   1200: 3,
+//   100: 2,
+//   500: 1,
+// };
+default: 4,
+3000: 6,
+2000: 5,
+1100: 4,
+700: 3,
+500: 3
 };
 
 const MasonryLayout = ({ pins }) => (

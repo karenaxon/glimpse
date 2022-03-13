@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { client } from "../client";
 import { categories } from "../utils/data";
 import { AiOutlineCloudUpload } from 'react-icons/ai';
 import { MdDelete } from 'react-icons/md';
 import Spinner from './Spinner';
+import { fetchUser } from './../utils/fetchUser';
 
-const CreatePin = ({ user }) => {
+  const CreatePin = ({ user }) => {
   const [title, setTitle] = useState("");
   const [about, setAbout] = useState("");
   const [destination, setDestination] = useState("");
@@ -16,6 +17,11 @@ const CreatePin = ({ user }) => {
   const [imageAsset, setImageAsset] = useState(null);
   const [wrongImageType, setWrongImageType] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const user = fetchUser();
+    if(!user) navigate('/login');
+  }, [])
 
   const uploadImage = (e) => {
     const { type, name } = e.target.files[0];

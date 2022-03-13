@@ -18,6 +18,7 @@ const Login = () => {
       userName: name,
       image: imageUrl
     };
+    console.log(response.profileObj);
     client.createIfNotExists(doc).then(() => {
       navigate('/', {replace: true});
     })

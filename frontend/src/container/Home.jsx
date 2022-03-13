@@ -8,6 +8,7 @@ import { client } from '../client';
 import Pins from './Pins';
 import logo from '../assets/logo-transparent.png';
 import { fetchUser } from '../utils/fetchUser';
+import { RiUser5Fill } from 'react-icons/ri';
 
 const Home = () => {
   const [toggleSidebar, setToggleSidebar] = useState(false);
@@ -35,13 +36,22 @@ const Home = () => {
       </div>
       <div className="flex md:hidden flex-row">
         <div className="p-2 w-full flex flex-row justify-between items-center shadow-md">
-          <HiMenu fontSize={40} className="cursor-pointer" color={'#0079C6'} onClick={() => setToggleSidebar(true)} />
+          <HiMenu fontSize={40} className="cursor-pointer" onClick={() => setToggleSidebar(true)} />
           <Link to="/">
-            <img src={logo} alt="logo" className="w-28" />
+            <img src={logo} alt="logo" className="w-20" />
           </Link>
+          {!user ? (
+            <Link to="/login">
+              <RiUser5Fill 
+                color={'#0079C6'}
+                className="w-10 h-12 -mt-2 md:w-12 md:h-14"
+                />
+            </Link>
+        ) : (
           <Link to={`user-profile/${user?._id}`}>
             <img src={user?.image} alt="user-pic" className="w-9 h-9 rounded-full " />
           </Link>
+          )}
         </div>
         {toggleSidebar && (
         <div className="fixed w-4/5 bg-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in">

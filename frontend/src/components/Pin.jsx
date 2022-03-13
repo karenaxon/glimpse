@@ -11,8 +11,8 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
   const [postHovered, setPostHovered] = useState(false);
   const navigate = useNavigate();
   const user = fetchUser();
-  const alreadySaved = !!save?.save?.filter(
-    (item) => item.postedBy._id === user.googleId
+  const alreadySaved = !!save?.filter(
+    (item) => item?.postedBy?._id === user?.googleId
   )?.length;
 
   const savePin = (id) => {
@@ -23,10 +23,10 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
         .insert("after", "save[-1]", [
           {
             _key: uuidv4(),
-            userId: user.googleId,
+            userId: user?.googleId,
             postedBy: {
               _type: "postedBy",
-              _ref: user.googleId,
+              _ref: user?.googleId,
             },
           },
         ])
@@ -72,7 +72,7 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
                   <MdDownloadForOffline />
                 </a>
               </div>
-              {/* {alreadySaved ? (
+              {alreadySaved ? (
                 <button
                   type="button"
                   className="bg-greenColor hover:opacity-100 text-white font-bold px-5 py-1 text-base rounded-3x1 hover:shadow-md outline-none"
@@ -90,7 +90,7 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
                 >
                   Save
                 </button>
-              )} */}
+              )}
             </div>
             <div className="flex justify-between items-center gap-2 w-full">
               {destination && (
@@ -106,7 +106,7 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
                     : destination.slice(8)}
                 </a>
               )}
-              {postedBy?._id === user.googleId && (
+              {postedBy?._id === user?.googleId && (
                 <button
                   type="button"
                   onClick={(e) => {

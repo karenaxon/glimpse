@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { AiOutlineLogout } from 'react-icons/ai';
-import { useParams, useNavigate } from 'react-router-dom';
-import { GoogleLogout } from 'react-google-login';
-import { client } from '../client';
-import { userQuery } from '../utils/data'
-import Spinner from './Spinner';
+import React, { useState, useEffect } from "react";
+import { AiOutlineLogout } from "react-icons/ai";
+import { useParams, useNavigate } from "react-router-dom";
+import { GoogleLogout } from "react-google-login";
+import { client } from "../client";
+import { userQuery } from "../utils/data";
+import Spinner from "./Spinner";
 
 const UserProfile = () => {
   const [user, setUser] = useState();
@@ -14,67 +14,63 @@ const UserProfile = () => {
 
   useEffect(() => {
     const query = userQuery(userId);
-    client
-    .fetch(query)
-    .then((data) => {
+    client.fetch(query).then((data) => {
       setUser(data[0]);
-    })
-  
-  }, [userId])
-  
+    });
+  }, [userId]);
+
   const logout = () => {
     localStorage.clear();
 
-    navigate('/login');
+    navigate("/login");
   };
 
-  if(!user) {
-    return <Spinner message="Loading profile..."/>
+  if (!user) {
+    return <Spinner message="Loading profile..." />;
   }
 
   return (
-    <div className='relative pb-2 h-full justify-center items-center'>
-      <div className='flex flex-col pb-5'>
-        <div className='relative flex flex-col mb-7'>
-          <div className='flex flex-col justify-center items-center'>
-          <img
-            className="w-full h-270 2xl:h-510 shadow-lg object-cover"
-            src="https://source.unsplash.com/1600x900/?modern-art"
-            alt="user-pic"
-          />
-          <img
-            className='rounded-full w-20 h-20 -mt-10 shadow-xl object-cover outline outline-blue-600 hover:outline-green-400'
-            src={user.image}
-            alt="user-pic"
-          />
-          <div className='font-bold text-3xl text-center mt-3'>
-            {user.userName}
-          </div>
-          <div className=''>
-            <GoogleLogout 
-              clientId={ `${process.env.REACT_APP_GOOGLE_API_TOKEN}`}
-              render={(renderProps) => (
-                <button
-                type='button'
-                className='bg-white p-2 rounded-full cursor-pointer outline-none shadow-md'
-                onClick={renderProps.disabled}
-                disabled={renderProps.disabled}
-                >
-                <AiOutlineLogout color="red" fontSize={21} />
-                <p className='bg-white rounded-full text-color-red items-center'>Logout</p>
-                </button>
-              )}
-              onLogoutSuccess={logout}
-              cookiePolicy="single_host_origin"
+    <div className="relative pb-2 h-full justify-center items-center">
+      <div className="flex flex-col pb-5">
+        <div className="relative flex flex-col mb-7">
+          <div className="flex flex-col justify-center items-center">
+            <img
+              className="w-full h-270 2xl:h-510 shadow-lg object-cover"
+              src="https://source.unsplash.com/1600x900/?modern-art"
+              alt="user-pic"
             />
-          </div>
+            <img
+              className="rounded-full w-20 h-20 -mt-10 shadow-xl object-cover outline outline-blue-600 hover:outline-green-400"
+              src={user.image}
+              alt="user-pic"
+            />
+            <h1 className="font-bold text-3xl text-center mt-3">
+              {user.userName}
+            </h1>
+            <div className="absolute top-0 z-1 right-9 p-2">
+              {userId === user._id && (
+                <GoogleLogout
+                  clientId={`${process.env.REACT_APP_GOOGLE_API_TOKEN}`}
+                  render={(renderProps) => (
+                    <button
+                      type="button"
+                      className="bg-white p-2 rounded-full cursor-pointer outline-none shadow-md"
+                      onClick={renderProps.onClick}
+                      disabled={renderProps.disabled}
+                    >
+                      <AiOutlineLogout color="red" fontSize={21} />
+                    </button>
+                  )}
+                  onLogoutSuccess={logout}
+                  cookiePolicy="single_host_origin"
+                />
+              )}
+            </div>
           </div>
         </div>
-
-        </div>
-
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default UserProfile
+export default UserProfile;

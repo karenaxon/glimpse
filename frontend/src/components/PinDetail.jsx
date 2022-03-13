@@ -4,7 +4,8 @@ import { Link, useParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { client, urlFor } from "../client";
 import MasonryLayout from "./MasonryLayout";
-import {
+import { FcGoogle } from 'react-icons/fc';
+import { 
   pinDetailMorePinQuery,
   pinDetailQuery,
 } from "../utils/data";
@@ -40,6 +41,9 @@ const PinDetail = ({ user }) => {
   }, [pinId]);
 
   const addComment = () => {
+    if(!user){
+      setAddingComment(false);
+    } else {
     if(comment){
       setAddingComment(true);
 
@@ -54,6 +58,13 @@ const PinDetail = ({ user }) => {
         setAddingComment(false);
       });
     }
+  }
+  };
+
+  const deletePin = (pinId) => {
+    client.delete(pinId).then(() => {
+      window.location.reload();
+    });
   };
 
   if (!pinDetail) return <Spinner color={'#0079C6'}message="Loading pin..." />;
@@ -103,10 +114,19 @@ const PinDetail = ({ user }) => {
                 </div>
               ))}
             </div>
-            <div>
+            <div className="mt-2">
+            {!user ? (
+              <div className="flex flex-col" >
+                <Link to={"/login"} className="text-red-500 mt-2 mb-2">
+                <FcGoogle />
+                <p>Please login to add a comment</p>
+                </Link>
+              </div>
+            ) : (
               <Link to={`/user-profile/${user._id}`}>
                 <img src={user.image} className="w-10 h-10 rounded-full cursor-pointer" alt="user-profile" />
               </Link>
+            )}
               <input
               className="flex-1 border-gray-100 outline-none border-2 p-2 rounded 2xl focus:border-gray-300"
               type='text'
